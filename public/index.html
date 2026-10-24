@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxygen Fitness Club | Home</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e50914">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Oxygen Fitness Club Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="admin.html">Admin</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+  <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Build Your Body, <span>Build Your Life</span></h1>
+    <p>Join Oxygen Fitness Club — Where Strength Meets Passion.</p>
+    <a href="join.html" class="btn">Join Now</a>
+    <a href="services.html" class="btn btn-outline">Our Services</a>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Why Choose <span>Oxygen Fitness Club?</span></h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <i class="fas fa-dumbbell"></i>
+      <h3>Modern Equipment</h3>
+      <p>Latest gym machines & free weights for all levels.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-user-tie"></i>
+      <h3>Expert Trainers</h3>
+      <p>Certified trainers to guide your fitness journey.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-heartbeat"></i>
+      <h3>Cardio Zone</h3>
+      <p>Treadmills, cycles & more for heart health.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-clock"></i>
+      <h3>Open 24/7</h3>
+      <p>Workout anytime — morning or midnight.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Transform Yourself?</h2>
+  <a href="join.html" class="btn">Register Today</a>
+</section>
+
+<footer>
+  <p>© 2025 Oxygen Fitness Club. All Rights Reserved.</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

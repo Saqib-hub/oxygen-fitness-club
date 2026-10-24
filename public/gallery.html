@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gallery | Oxygen Fitness Club</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e50914">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h1>Our <span>Gallery</span></h1>
+  <p style="margin-bottom:30px; color:#aaa;">Take a look inside Oxygen Fitness Club</p>
+
+  <div class="gallery-grid">
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80" alt="Gym 1">
+        <span class="overlay-text">Strength Training</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80" alt="Gym 2">
+        <span class="overlay-text">Cardio Zone</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80" alt="Gym 3">
+        <span class="overlay-text">Modern Equipment</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&q=80" alt="Gym 4">
+        <span class="overlay-text">Free Weights</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=800&q=80" alt="Gym 5">
+        <span class="overlay-text">Personal Training</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&q=80" alt="Gym 6">
+        <span class="overlay-text">Gym Interior</span>
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img src="" id="lightbox-img" alt="Preview">
+</div>
+</section>
+
+<footer><p>© 2025 Oxygen Fitness Club.</p></footer>
+<script>
+// Gallery Lightbox
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const img = item.querySelector('img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    lightboxImg.src = img.src;
+    lightbox.classList.add('active');
+  });
+});
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') closeLightbox();
+});
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>

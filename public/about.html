@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us | Oxygen Fitness Club</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e50914">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h1>About <span>Oxygen Fitness Club</span></h1>
+  <p class="about-text">
+    Oxygen Fitness Club is a modern, professional gym dedicated to helping you achieve
+    your fitness goals. With state-of-the-art equipment, certified trainers, and a
+    motivating environment, we are your perfect fitness partner.
+  </p>
+  <p class="about-text" style="margin-top:20px;">
+    Our mission is simple — to provide every member with the tools, guidance, and
+    motivation they need to become the strongest version of themselves. Whether you
+    are a beginner or a professional athlete, we have everything you need.
+  </p>
+
+  <div class="stats">
+    <div><h3>500+</h3><p>Happy Members</p></div>
+    <div><h3>10+</h3><p>Expert Trainers</p></div>
+    <div><h3>5+</h3><p>Years Experience</p></div>
+  </div>
+</section>
+
+<footer><p>© 2025 Oxygen Fitness Club.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

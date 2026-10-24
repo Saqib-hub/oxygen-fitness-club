@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us | Oxygen Fitness Club</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e50914">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h1>Contact <span>Us</span></h1>
+  <p style="margin-bottom:30px; color:#aaa;">Have a question? Send us a message or chat on WhatsApp.</p>
+
+  <form id="contactForm" class="form-box">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
+    <p id="contactMsg" style="font-weight:600; margin-top:10px;"></p>
+    <a id="autoWhatsappBtn" href="#" target="_blank" style="display: none; margin-top: 15px; background: #25D366; color: white; padding: 12px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; text-align: center; font-size: 16px; width: 100%; box-sizing: border-box;">
+  <i class="fab fa-whatsapp"></i> Send Message on WhatsApp
+</a>
+  </form>
+
+  <div class="contact-info">
+    <p><i class="fas fa-envelope"></i> oxygenfitnessclub@gmail.com</p>
+    <p><i class="fas fa-phone"></i> +92 303 5300031</p>
+    <p><i class="fas fa-map-marker-alt"></i> Mumtaz Plaza Basement, Fateh Jang, Pakistan</p>
+    <a href="https://wa.me/923035300031" target="_blank" class="whatsapp-btn">
+      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer><p>© 2025 Oxygen Fitness Club.</p></footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const contactMsg = document.getElementById('contactMsg');
+  contactMsg.innerText = 'Sending...';
+  contactMsg.style.color = '#aaa';
+
+  const formData = Object.fromEntries(new FormData(e.target));
+
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(formData)
+    });
+    const data = await res.json();
+    contactMsg.innerText = data.message;
+    contactMsg.style.color = data.success ? '#25D366' : '#e50914';
+    if (data.success) e.target.reset();
+      const autoBtn = document.getElementById('autoWhatsappBtn');
+      const whatsappNumber = "923043621645"; // ⚠️ Yahan apna WhatsApp number dalna (bina + ke)
+      const messageText = `Hi Oxygen Fitness Club, my name is ${formData.name}. ${formData.message}`;
+      
+      autoBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
+      autoBtn.style.display = 'block'; 
+  } catch (err) {
+    contactMsg.innerText = '❌ Server error. Please try again.';
+    contactMsg.style.color = '#e50914';
+  }
+});
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>

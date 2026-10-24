@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Services | Oxygen Fitness Club</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#e50914">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="join.html">Join Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h1>Our <span>Services & Charges</span></h1>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <h3>Monthly</h3>
+      <p class="price">₹800<span>/month</span></p>
+      <ul>
+        <li>Full Gym Access</li>
+        <li>Cardio + Weights</li>
+        <li>Locker Facility</li>
+      </ul>
+      <a href="join.html" class="btn">Join</a>
+    </div>
+
+    <div class="price-card featured">
+      <h3>Quarterly</h3>
+      <p class="price">₹2000<span>/3 months</span></p>
+      <ul>
+        <li>All Monthly Benefits</li>
+        <li>1 Trainer Session/Week</li>
+        <li>Diet Plan</li>
+      </ul>
+      <a href="join.html" class="btn">Join</a>
+    </div>
+
+    <div class="price-card">
+      <h3>Yearly</h3>
+      <p class="price">₹7000<span>/year</span></p>
+      <ul>
+        <li>All Quarterly Benefits</li>
+        <li>Personal Trainer</li>
+        <li>Free Merchandise</li>
+      </ul>
+      <a href="join.html" class="btn">Join</a>
+    </div>
+
+  </div>
+</section>
+
+<footer><p>© 2025 Oxygen Fitness Club.</p></footer>
+<script src="js/script.js"></script>
+</body>
+</html>

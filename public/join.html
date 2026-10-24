@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Join Us | Oxygen Fitness Club</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="logo">
+    <img src="images/logo.png" alt="Logo">
+    <span>Oxygen Fitness Club</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="join.html" class="active">Join Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="admin.html">Admin</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-section">
+  <h1>Member <span>Registration</span></h1>
+  <p style="margin-bottom:30px; color:#aaa;">Fill the form below to become a member of Oxygen Fitness Club</p>
+
+  <form id="joinForm" class="form-box">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="number" name="age" placeholder="Age" min="10" max="100" required>
+    <select name="plan" required>
+      <option value="">Select Membership Plan</option>
+      <option value="Monthly">Monthly - ₹800</option>
+      <option value="Quarterly">Quarterly - ₹2000</option>
+      <option value="Yearly">Yearly - ₹7000</option>
+    </select>
+    <textarea name="address" placeholder="Your Address" rows="3" required></textarea>
+    <button type="submit" class="btn">Submit Registration</button>
+    <p id="formMsg" style="font-weight:600; margin-top:10px;"></p>
+  </form>
+</section>
+
+<footer><p>© 2025 Oxygen Fitness Club.</p></footer>
+
+<script>
+document.getElementById('joinForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const formData = Object.fromEntries(new FormData(e.target));
+  
+  // Form data browser me save karo
+  localStorage.setItem('memberData', JSON.stringify(formData));
+  
+  const prices = { Monthly: 800, Quarterly: 2000, Yearly: 7000 };
+  const amount = prices[formData.plan] || 800;
+  
+  // Payment page par bhejo (bina kisi API ke)
+  window.location.href = `/manual-payment.html?amount=${amount}`;
+});
+</script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
