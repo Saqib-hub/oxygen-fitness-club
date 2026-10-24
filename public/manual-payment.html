@@ -56,17 +56,28 @@ async function confirmPayment() {
     return;
   }
 
-  // Database me save karo
-  const res = await fetch('/api/register', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(memberData)
-  });
-  const data = await res.json();
-  
-  alert(data.message);
-  localStorage.removeItem('memberData');
-  window.location.href = '/index.html';
+  // Button ko disable karo taaki double click na ho
+  const btn = document.querySelector('.btn-pay');
+  btn.innerText = 'Saving...';
+  btn.disabled = true;
+
+  try {
+    // Database me save karo
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(memberData)
+    });
+    const data = await res.json();
+    
+    alert(data.message);
+    localStorage.removeItem('memberData');
+    window.location.href = '/index.html';
+  } catch (err) {
+    alert('Server error. Please try again.');
+    btn.innerText = 'I have sent the payment';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
