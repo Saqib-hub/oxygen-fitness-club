@@ -52,16 +52,34 @@
 <script>
 document.getElementById('joinForm').addEventListener('submit', async (e) => {
   e.preventDefault();
+  const formMsg = document.getElementById('formMsg');
   const formData = Object.fromEntries(new FormData(e.target));
   
-  // Form data local storage me save karo
-  localStorage.setItem('memberData', JSON.stringify(formData));
-  
+  formMsg.innerText = 'Opening Safepay...';
+  formMsg.style.color = '#aaa';
+
   const prices = { Monthly: 800, Quarterly: 2000, Yearly: 7000 };
   const amount = prices[formData.plan] || 800;
-  
-  // Payment page par bhejo
-  window.location.href = `/manual-payment.html?amount=${amount}`;
+
+  try {
+    const res = await fetch('/api/create-payment', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ amount: amount })
+    });
+    
+    const data = await res.json();
+    
+    if (data.success) {
+      window.location.href = data.paymentUrl;
+    } else {
+      formMsg.innerText = '❌ ' + data.message;
+      formMsg.style.color = '#e50914';
+    }
+  } catch (err) {
+    formMsg.innerText = '❌ Server error: ' + err.message;
+    formMsg.style.color = '#e50914';
+  }
 });
 </script>
 <script src="js/script.js"></script>
