@@ -57,7 +57,7 @@ router.post('/register', async (req, res) => {
     });
   } catch (err) {
     console.error('Register Error:', err.message);
-    res.json({
+    res.status(Member.db.readyState === 1 ? 500 : 503).json({
       success: false,
       message: '❌ Registration Failed. Please try again.'
     });

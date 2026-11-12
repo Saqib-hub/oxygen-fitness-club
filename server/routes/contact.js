@@ -59,7 +59,7 @@ router.post('/contact', async (req, res) => {
     });
   } catch (err) {
     console.error('Contact Error:', err.message);
-    res.json({
+    res.status(Contact.db.readyState === 1 ? 500 : 503).json({
       success: false,
       message: '❌ Failed to send message. Please try again.'
     });

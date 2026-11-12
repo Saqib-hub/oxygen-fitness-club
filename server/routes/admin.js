@@ -9,7 +9,11 @@ router.get('/admin/contacts', async (req, res) => {
     const contacts = await Contact.find().sort({ date: -1 });
     res.json({ success: true, contacts });
   } catch (err) {
-    res.json({ success: false, message: err.message });
+    console.error('Admin contacts error:', err.message);
+    res.status(Contact.db.readyState === 1 ? 500 : 503).json({
+      success: false,
+      message: 'Unable to load contacts right now.'
+    });
   }
 });
 
@@ -19,7 +23,11 @@ router.get('/admin/members', async (req, res) => {
     const members = await Member.find().sort({ joinedAt: -1 });
     res.json({ success: true, members });
   } catch (err) {
-    res.json({ success: false, message: err.message });
+    console.error('Admin members error:', err.message);
+    res.status(Member.db.readyState === 1 ? 500 : 503).json({
+      success: false,
+      message: 'Unable to load members right now.'
+    });
   }
 });
 
@@ -29,7 +37,11 @@ router.delete('/admin/contact/:id', async (req, res) => {
     await Contact.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: 'Contact deleted' });
   } catch (err) {
-    res.json({ success: false, message: err.message });
+    console.error('Admin contact delete error:', err.message);
+    res.status(Contact.db.readyState === 1 ? 500 : 503).json({
+      success: false,
+      message: 'Unable to delete this contact right now.'
+    });
   }
 });
 
@@ -39,7 +51,11 @@ router.delete('/admin/member/:id', async (req, res) => {
     await Member.findByIdAndDelete(req.params.id);
     res.json({ success: true, message: 'Member deleted' });
   } catch (err) {
-    res.json({ success: false, message: err.message });
+    console.error('Admin member delete error:', err.message);
+    res.status(Member.db.readyState === 1 ? 500 : 503).json({
+      success: false,
+      message: 'Unable to delete this member right now.'
+    });
   }
 });
 
